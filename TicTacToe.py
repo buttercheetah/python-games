@@ -76,15 +76,25 @@ def checkifwin():
         return True
     else:
         return False
-printboard()
+print("Will there be multiple players?\ny/N")
+mp = input()
+if mp.lower() == "y":
+    mp = True
+else:
+    mp = False
 gameover = False
 while True:
     if gameover:
         break
     Player1play = False
-    while Player1play == False:
+    Player2play = False
+    while True:
         clearscreen()
-        print("Welcome")
+        print("Welcome", end="")
+        if Player1play:
+            print(" player 2")
+        else:
+            print(" player 1")
         printboard()
         gameover = checkifwin()
         if gameover:
@@ -107,8 +117,15 @@ while True:
                     print(0 + "") #purposefully breaking try so it doesnt reach bottom
                 if int(choce[1]) > 3 or choce[1] == 0:
                     print(0 + "") #purposefully breaking try so it doesnt reach bottom
-                place_mark(int(choce[1]), colum, "X")
-                Player1play = True
+                if Player1play:
+                    idp = "0"
+                else:
+                    idp = 'X'
+                place_mark(int(choce[1]), colum, idp)
+                if Player1play:
+                    Player2play = True
+                else:
+                    Player1play = True
             except:
                 pass
     if gameover == False:
