@@ -14,10 +14,63 @@ l1 = ['*','*','*']
 l2 = ['*','*','*']
 l3 = ['*','*','*']
 def printboard():
-    print("Board")
+    print("  A B C")
+    print(" ┌─────┐")
+    print("1│" + ralps(l1) + "│")
+    print("2│" + ralps(l2) + "│")
+    print("3│" + ralps(l3) + "│")
+    print(" └─────┘")
 def check_mark(row, col):
-    print("check if exists")
-def place_mark(row, col):
-    print("placing")
-def checkifwin(id):
-    print("checking")
+    if row == 1:
+        if l1[col] == "*":
+            return False
+        else:
+            return True
+    elif row == 2:
+        if l2[col] == "*":
+            return False
+        else:
+            return True
+    elif row == 3:
+        if l3[col] == "*":
+            return False
+        else:
+            return True
+def place_mark(row, col, id):
+    if check_mark(row, col):
+        return False
+    else:
+        if row == 1:
+            l1[col] = id
+        elif row == 2:
+            l2[col] = id
+        elif row == 3:
+            l3[col] = id
+        return True
+def checkifwin():
+    if l1[0] == l1[1] and l1[1] == l1[2] and l1[2] != "*":
+        print('Player ' + l1[1] + ' won!')
+        return True
+    elif l2[0] == l2[1] and l2[1] == l2[2] and l2[2] != "*":
+        print('Player ' + l2[1] + ' won!')
+        return True
+    elif l3[0] == l3[1] and l3[1] == l3[2] and l3[2] != "*":
+        print('Player ' + l3[1] + ' won!')
+        return True
+    elif l1[0] == l2[1] and l3[2] == l1[0] and l1[0] != "*":
+        print('Player ' + l3[2] + ' won!')
+        return True
+    elif l3[0] == l2[1] and l1[2] == l3[0] and l3[0] != "*":
+        print('Player ' + l1[2] + ' won!')
+        return True
+    elif l1[0] == l2[0] and l3[0] == l1[0] and l1[0] != "*":
+        print('Player ' + l3[0] + ' won!')
+        return True
+    elif l1[1] == l2[1] and l3[1] == l1[1] and l1[1] != "*":
+        print('Player ' + l3[1] + ' won!')
+        return True
+    elif l1[2] == l2[2] and l3[2] == l1[2] and l1[2] != "*":
+        print('Player ' + l3[2] + ' won!')
+        return True
+    else:
+        return False
