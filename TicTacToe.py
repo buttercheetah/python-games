@@ -41,7 +41,6 @@ def place_mark(row, col, id): #places a move
         return True
 def winnermessage(player, lostplayer):
     ms = random.randrange(1,15)
-    ms = 13
     if ms == 1: print('Congratulations and BRAVO on your win ' + str(player) + "!")
     elif ms == 2: print("This calls for celebrating! Congrats " + str(player) + "!")
     elif ms == 3: print("I knew it was only a matter of time. Well done " + str(player) + "!")
@@ -187,8 +186,10 @@ while True:
                 elif choce[0].lower() == "b": colum = 1
                 elif choce[0].lower() == "c": colum = 2
                 else:
+                    print("Movement outside possible range!")
                     print(0 + "") #purposefully breaking try so it doesnt reach bottom
                 if int(choce[1]) > 3 or choce[1] == 0:
+                    print("Movement outside possible range!")
                     print(0 + "") #purposefully breaking try so it doesnt reach bottom
                 if mp:
                     if Player1play:
@@ -199,6 +200,7 @@ while True:
                     idp = 'X'
                 thing = place_mark(int(choce[1]), colum, idp)
                 if thing == False:
+                    print("Piece already there!")
                     print(0 + "") #purposefully breaking try so it doesnt reach bottom
                 if mp:
                     if Player1play:
@@ -210,6 +212,7 @@ while True:
                     break
             except:
                 pass
+        time.sleep(1)
         if Player1play and Player2play:
             break
     if gameover == False and mp == False:
