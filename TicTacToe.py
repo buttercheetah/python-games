@@ -147,7 +147,7 @@ def checkifwin(): #checks if a player has won and then prints out who won
         return True
     else:
         return False
-print("Will there be multiple players?\ny/N")
+print("Will there be multiple players?\ny/N") #optional AI
 mp = input()
 if mp.lower() == "y":
     mp = True
@@ -162,7 +162,7 @@ while True:
     while True:
         clearscreen()
         print("Welcome", end="")
-        if mp:
+        if mp: #checks if there are two players playing, if so it displays whos turn it is
             if Player1play:
                 print(" player 2")
             else:
