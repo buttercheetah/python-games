@@ -13,6 +13,8 @@ def clearscreen():
 l1 = ['*','*','*']
 l2 = ['*','*','*']
 l3 = ['*','*','*']
+def ralps(string): #remove annoying list print stuff
+    return str(string).replace("[", "").replace("]", "").replace("'", "").replace(",", "")
 def printboard():
     print("  A B C")
     print(" ┌─────┐")
@@ -74,3 +76,34 @@ def checkifwin():
         return True
     else:
         return False
+gameover = False
+while True:
+    if gameover:
+        break
+    clearscreen()
+    print("Welcome")
+    printboard()
+    gameover = checkifwin()
+    if gameover:
+        break
+    print("Please input placement or type EXIT to quit\nExample: A1")
+    choce = input()
+    if choce == 'EXIT':
+        gameover = True
+        break
+    elif len(choce) > 2:
+        print("too long")
+    elif len(choce) < 2:
+        print("Too short")
+    else:
+        try:
+            if choce[0].lower() == "a": colum = 0
+            elif choce[0].lower() == "b": colum = 1
+            elif choce[0].lower() == "c": colum = 2
+            else:
+                print(0 + "") #purposefully breaking try so it doesnt reach bottom
+            if int(choce[1]) > 3 or choce[1] == 0:
+                print(0 + "") #purposefully breaking try so it doesnt reach bottom
+            place_mark(int(choce[1]), colum, "X")
+        except:
+            pass
