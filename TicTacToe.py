@@ -91,10 +91,11 @@ while True:
     while True:
         clearscreen()
         print("Welcome", end="")
-        if Player1play:
-            print(" player 2")
-        else:
-            print(" player 1")
+        if mp:
+            if Player1play:
+                print(" player 2")
+            else:
+                print(" player 1")
         printboard()
         gameover = checkifwin()
         if gameover:
@@ -117,18 +118,28 @@ while True:
                     print(0 + "") #purposefully breaking try so it doesnt reach bottom
                 if int(choce[1]) > 3 or choce[1] == 0:
                     print(0 + "") #purposefully breaking try so it doesnt reach bottom
-                if Player1play:
-                    idp = "0"
+                if mp:
+                    if Player1play:
+                        idp = "0"
+                    else:
+                        idp = 'X'
                 else:
                     idp = 'X'
                 place_mark(int(choce[1]), colum, idp)
-                if Player1play:
-                    Player2play = True
+                if mp:
+                    if Player1play:
+                        Player2play = True
+                    else:
+                        Player1play = True
                 else:
                     Player1play = True
+                    break
             except:
                 pass
-    if gameover == False:
+        if Player1play and Player2play:
+            break
+    if gameover == False and mp == False:
         otherplay = place_mark(random.randrange(1,4), random.randrange(0,3), "0")
         while otherplay == False:
             otherplay = place_mark(random.randrange(1,4), random.randrange(0,3), "0")
+        Player2play = True
