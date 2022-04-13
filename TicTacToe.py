@@ -76,34 +76,42 @@ def checkifwin():
         return True
     else:
         return False
+printboard()
 gameover = False
 while True:
     if gameover:
         break
-    clearscreen()
-    print("Welcome")
-    printboard()
-    gameover = checkifwin()
-    if gameover:
-        break
-    print("Please input placement or type EXIT to quit\nExample: A1")
-    choce = input()
-    if choce == 'EXIT':
-        gameover = True
-        break
-    elif len(choce) > 2:
-        print("too long")
-    elif len(choce) < 2:
-        print("Too short")
-    else:
-        try:
-            if choce[0].lower() == "a": colum = 0
-            elif choce[0].lower() == "b": colum = 1
-            elif choce[0].lower() == "c": colum = 2
-            else:
-                print(0 + "") #purposefully breaking try so it doesnt reach bottom
-            if int(choce[1]) > 3 or choce[1] == 0:
-                print(0 + "") #purposefully breaking try so it doesnt reach bottom
-            place_mark(int(choce[1]), colum, "X")
-        except:
-            pass
+    Player1play = False
+    while Player1play == False:
+        clearscreen()
+        print("Welcome")
+        printboard()
+        gameover = checkifwin()
+        if gameover:
+            break
+        print("Please input placement or type EXIT to quit\nExample: A1")
+        choce = input()
+        if choce == 'EXIT':
+            gameover = True
+            break
+        elif len(choce) > 2:
+            print("too long")
+        elif len(choce) < 2:
+            print("Too short")
+        else:
+            try:
+                if choce[0].lower() == "a": colum = 0
+                elif choce[0].lower() == "b": colum = 1
+                elif choce[0].lower() == "c": colum = 2
+                else:
+                    print(0 + "") #purposefully breaking try so it doesnt reach bottom
+                if int(choce[1]) > 3 or choce[1] == 0:
+                    print(0 + "") #purposefully breaking try so it doesnt reach bottom
+                place_mark(int(choce[1]), colum, "X")
+                Player1play = True
+            except:
+                pass
+    if gameover == False:
+        otherplay = place_mark(random.randrange(1,4), random.randrange(0,3), "0")
+        while otherplay == False:
+            otherplay = place_mark(random.randrange(1,4), random.randrange(0,3), "0")
