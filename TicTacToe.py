@@ -145,14 +145,146 @@ def checkifwin(): #checks if a player has won and then prints out who won
         else:
             winnermessage("0", "X")
         return True
+    elif l1[0] != '*' and l1[1] != '*' and l1[2] != '*' and l2[0] != '*' and l2[1] != '*' and l2[2] != '*' and l3[0] != '*' and l3[1] != '*' and l3[2] != '*':
+        print("Tie!")
+        return True
     else:
         return False
+def aishouldgowheretostopplayer():
+    if l1[0] == "X" and l1[1] == "X" and l1[2] == "*": #checks if player is about to win on top row
+        place_mark(1, 2, "0")
+    elif l1[1] == "X" and l1[2] == "X" and l1[0] == "*":
+        place_mark(1, 0, "0")
+    elif l1[0] == "X" and l1[2] == "X" and l1[1] == "*":
+        place_mark(1, 1, "0")
+    
+    elif l2[0] == "X" and l2[1] == "X" and l2[2] == "*":#checks if player is about to win on 2nd row
+        place_mark(2, 2, "0")
+    elif l2[1] == "X" and l2[2] == "X" and l2[0] == "*":
+        place_mark(2, 0, "0")
+    elif l2[0] == "X" and l2[2] == "X" and l2[1] == "*":
+        place_mark(2, 1, "0")
+
+    elif l3[0] == "X" and l3[1] == "X" and l3[2] == "*":#checks if player is about to win on 3rd row
+        place_mark(3, 2, "0")
+    elif l3[1] == "X" and l3[2] == "X" and l3[0] == "*":
+        place_mark(3, 0, "0")
+    elif l3[0] == "X" and l3[2] == "X" and l3[1] == "*":
+        place_mark(3, 1, "0")
+    
+    elif l1[0] == "X" and l2[0] == "X" and l3[0] == "*":#checks if player is about to win on col A
+        place_mark(3, 0, "0")
+    elif l3[0] == "X" and l2[0] == "X" and l1[0] == "*":
+        place_mark(1, 0, "0")
+    elif l1[0] == "X" and l3[0] == "X" and l2[0] == "*":
+        place_mark(2, 0, "0")
+    
+    elif l1[1] == "X" and l2[1] == "X" and l3[1] == "*":#checks if player is about to win on col B
+        place_mark(3, 1, "0")
+    elif l3[1] == "X" and l2[1] == "X" and l1[1] == "*":
+        place_mark(1, 1, "0")
+    elif l3[1] == "X" and l1[1] == "X" and l2[1] == "*":
+        place_mark(2, 1, "0")
+    
+    elif l1[2] == "X" and l2[2] == "X" and l3[2] == "*":#checks if player is about to win on col C
+        place_mark(3, 2, "0")
+    elif l3[2] == "X" and l2[2] == "X" and l1[2] == "*":
+        place_mark(1, 2, "0")
+    elif l3[2] == "X" and l1[2] == "X" and l2[2] == "*":
+        place_mark(2, 2, "0")
+
+    elif l1[0] == "X" and l2[1] == "X" and l3[2] == "*":#checks if player is about to win on a diagonal
+        place_mark(3, 2, "0")
+    elif l3[2] == "X" and l2[1] == "X" and l1[0] == "*":
+        place_mark(1, 0, "0")
+    elif l1[2] == "X" and l2[1] == "X" and l3[0] == "*":
+        place_mark(3, 0, "0")
+    elif l1[0] == "X" and l3[2] == "X" and l2[1] == "*":
+        place_mark(2, 1, "0")
+    elif l3[0] == "X" and l2[1] == "X" and l1[2] == "*":
+        place_mark(1, 2, "0")
+    elif l3[0] == "X" and l1[2] == "X" and l2[1] == "*":
+        place_mark(2, 1, "0")
+    else:
+        return False
+def aishouldgowheretowin():
+    if l1[0] == "0" and l1[1] == "0" and l1[2] == "*": #checks if player is about to win on top row
+        place_mark(1, 2, "0")
+    elif l1[1] == "0" and l1[2] == "0" and l1[0] == "*":
+        place_mark(1, 0, "0")
+    elif l1[0] == "0" and l1[2] == "0" and l1[1] == "*":
+        place_mark(1, 1, "0")
+    
+    elif l2[0] == "0" and l2[1] == "0" and l2[2] == "*":#checks if player is about to win on 2nd row
+        place_mark(2, 2, "0")
+    elif l2[1] == "0" and l2[2] == "0" and l2[0] == "*":
+        place_mark(2, 0, "0")
+    elif l2[0] == "0" and l2[2] == "0" and l2[1] == "*":
+        place_mark(2, 1, "0")
+
+    elif l3[0] == "0" and l3[1] == "0" and l3[2] == "*":#checks if player is about to win on 3rd row
+        place_mark(3, 2, "0")
+    elif l3[1] == "0" and l3[2] == "0" and l3[0] == "*":
+        place_mark(3, 0, "0")
+    elif l3[0] == "0" and l3[2] == "0" and l3[1] == "*":
+        place_mark(3, 1, "0")
+    
+    elif l1[0] == "0" and l2[0] == "0" and l3[0] == "*":#checks if player is about to win on col A
+        place_mark(3, 0, "0")
+    elif l3[0] == "0" and l2[0] == "0" and l1[0] == "*":
+        place_mark(1, 0, "0")
+    elif l1[0] == "0" and l3[0] == "0" and l2[0] == "*":
+        place_mark(2, 0, "0")
+    
+    elif l1[1] == "0" and l2[1] == "0" and l3[1] == "*":#checks if player is about to win on col B
+        place_mark(3, 1, "0")
+    elif l3[1] == "0" and l2[1] == "0" and l1[1] == "*":
+        place_mark(1, 1, "0")
+    elif l3[1] == "0" and l1[1] == "0" and l2[1] == "*":
+        place_mark(2, 1, "0")
+    
+    elif l1[2] == "0" and l2[2] == "0" and l3[2] == "*":#checks if player is about to win on col C
+        place_mark(3, 2, "0")
+    elif l3[2] == "0" and l2[2] == "0" and l1[2] == "*":
+        place_mark(1, 2, "0")
+    elif l3[2] == "0" and l1[2] == "0" and l2[2] == "*":
+        place_mark(2, 2, "0")
+
+    elif l1[0] == "0" and l2[1] == "0" and l3[2] == "*":#checks if player is about to win on a diagonal
+        place_mark(3, 2, "0")
+    elif l3[2] == "0" and l2[1] == "0" and l1[0] == "*":
+        place_mark(1, 0, "0")
+    elif l1[2] == "0" and l2[1] == "0" and l3[0] == "*":
+        place_mark(3, 0, "0")
+    elif l1[0] == "0" and l3[2] == "0" and l2[1] == "*":
+        place_mark(2, 1, "0")
+    elif l3[0] == "0" and l2[1] == "0" and l1[2] == "*":
+        place_mark(1, 2, "0")
+    elif l3[0] == "0" and l1[2] == "0" and l2[1] == "*":
+        place_mark(2, 1, "0")
+    else:
+        return False
+def AIrandomplay():
+    otherplay = place_mark(random.randrange(1,4), random.randrange(0,3), "0")
+    while otherplay == False:
+        otherplay = place_mark(random.randrange(1,4), random.randrange(0,3), "0")
+    return True
 print("Will there be multiple players?\ny/N") #optional AI
 mp = input()
 if mp.lower() == "y":
     mp = True
 else:
     mp = False
+    print("What Dificulty would you like the AI to be?\n1-3 with 5 being the hardest. Defaults to 2")
+    choice = input()
+    try:
+        choice = int(choice)
+        if choice >= 1 and choice <=3:
+            aidif = choice
+        else:
+            choice = 2
+    except:
+        aidif = 2
 gameover = False
 while True:
     if gameover:
@@ -167,6 +299,8 @@ while True:
                 print(" player 2")
             else:
                 print(" player 1")
+        else:
+            print("") #prints to go to the next line
         printboard()
         gameover = checkifwin()
         if gameover:
@@ -212,11 +346,23 @@ while True:
                     break
             except:
                 pass
-        time.sleep(1)
+        
         if Player1play and Player2play:
             break
+    gameover = checkifwin()
     if gameover == False and mp == False:
-        otherplay = place_mark(random.randrange(1,4), random.randrange(0,3), "0")
-        while otherplay == False:
-            otherplay = place_mark(random.randrange(1,4), random.randrange(0,3), "0")
-        Player2play = True
+        if aidif == 1:
+            AIrandomplay()
+            Player2play = True
+        elif aidif == 2:
+            if aishouldgowheretostopplayer() == False:
+                AIrandomplay()
+            Player2play = True
+        elif aidif == 3:
+            if aishouldgowheretowin() == False:
+                if aishouldgowheretostopplayer() == False:
+                    if l2[1] == "*":
+                        place_mark(2, 1, "0")
+                    else:
+                        AIrandomplay()
+            Player2play = True
