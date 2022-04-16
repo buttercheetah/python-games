@@ -40,6 +40,8 @@ def place_mark(row, col, id): #places a move
         elif row == 3: l3[col] = id
         return True
 def winnermessage(player, lostplayer):
+    clearscreen()
+    printboard()
     ms = random.randrange(1,15)
     if ms == 1: print('Congratulations and BRAVO on your win ' + str(player) + "!")
     elif ms == 2: print("This calls for celebrating! Congrats " + str(player) + "!")
@@ -300,7 +302,7 @@ while True:
             else:
                 print(" player 1")
         else:
-            print("") #prints to go to the next line
+            print("\nAI difficulty:" + str(aidif)) #prints to go to the next line
         printboard()
         gameover = checkifwin()
         if gameover:
