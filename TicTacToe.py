@@ -281,10 +281,10 @@ else:
     choice = input()
     try:
         choice = int(choice)
-        if choice >= 1 and choice <=3:
+        if choice >= 0 and choice <=3:
             aidif = choice
         else:
-            choice = 2
+            aidif = 2
     except:
         aidif = 2
 gameover = False
